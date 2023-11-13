@@ -1,0 +1,59 @@
+<!-- admin/dashboard.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Vertical Side Navigation -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('admin_dashboard') }}">
+                                <i class="bi bi-house-door"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_menu_item') }}">
+                                <i class="bi bi-plus-circle"></i> Add New Item
+                            </a>
+                        </li>
+                        <!-- Add more destination cards as needed -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Header -->
+            <header class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Admin Dashboard</h1>
+                </div>
+            </header>
+
+            <!-- Body -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Stylish Title -->
+                <h2>Select an Order</h2>
+
+                <!-- List of Menus -->
+                <div class="row">
+                    {% for menu_item in menu_items %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ menu_item.image }}" class="card-img-top" alt="{{ menu_item.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ menu_item.name }}</h5>
+                                    <p class="card-text">{{ menu_item.description }}</p>
+                                    <p class="card-text"><small class="text-muted">Price: ${{ menu_item.price }}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+
+
+

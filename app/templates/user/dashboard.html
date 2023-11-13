@@ -1,0 +1,42 @@
+<!-- user/dashboard.html -->
+{% extends "user/base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Vertical Side Navigation (Optional for User Dashboard) -->
+            <!-- User Dashboard doesn't necessarily need a side navigation, so you can skip this part -->
+
+            <!-- Header -->
+            <header class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">User Dashboard</h1>
+                </div>
+            </header>
+
+            <!-- Body -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <!-- Stylish Title -->
+                <h2>Explore Our Menu</h2>
+
+                <!-- List of Menus -->
+                <div class="row">
+                    {% for menu_item in menu_items %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ menu_item.image }}" class="card-img-top" alt="{{ menu_item.name }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ menu_item.name }}</h5>
+                                    <p class="card-text">{{ menu_item.description }}</p>
+                                    <p class="card-text"><small class="text-muted">Price: ${{ menu_item.price }}</small></p>
+                                    <!-- You can add more details or actions for users here -->
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+

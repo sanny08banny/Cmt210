@@ -1,0 +1,35 @@
+<!-- app/templates/admin/manage_menu.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Manage Menu</h2>
+
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-info">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <!-- Include form fields for menu item details -->
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.description.label }} {{ form.description() }}
+    {{ form.price.label }} {{ form.price() }}
+    {{ form.image.label }} {{ form.image() }}
+    <input type="submit" value="Add Menu Item">
+  </form>
+
+  <h3>Existing Menu Items:</h3>
+  <ul>
+    {% for menu_item in menu_items %}
+      <li>
+        {{ menu_item.name }} - {{ menu_item.description }} - ${{ menu_item.price }}
+        <a href="{{ url_for('admin.edit_menu_item', menu_id=menu_item.id) }}">Edit</a>
+        <form method="POST" action="{{ url_for('admin.delete_menu_item', menu_id=menu_item.id) }}" style="display: inline;">
+          <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this menu item?')">
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

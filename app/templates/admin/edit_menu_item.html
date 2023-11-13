@@ -1,0 +1,22 @@
+<!-- app/templates/admin/edit_menu_item.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit Menu Item</h2>
+
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-info">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <!-- Include form fields for editing menu item details -->
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.description.label }} {{ form.description() }}
+    {{ form.price.label }} {{ form.price() }}
+    {{ form.image.label }} {{ form.image() }}
+    <input type="submit" value="Update Menu Item">
+  </form>
+{% endblock %}

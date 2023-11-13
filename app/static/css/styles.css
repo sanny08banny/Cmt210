@@ -1,0 +1,23 @@
+/* static/css/styles.css */
+body {
+    padding-top: 56px; /* Adjust according to your top navigation bar height */
+}
+
+/* Sidebar Styles */
+#sidebar {
+    min-width: 200px;
+    max-width: 200px;
+}
+
+#sidebar .nav-link {
+    padding: 10px;
+}
+
+#sidebar i {
+    margin-right: 8px;
+}
+
+/* Main Content Styles */
+main {
+    margin-top: 20px;
+}
